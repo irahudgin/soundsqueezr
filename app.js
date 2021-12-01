@@ -1,12 +1,15 @@
 const express = require("express");
+const { stat } = require("fs");
 const app = express();
 const path = require("path");
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+// If more than one html page staticPath has to change
+var staticPath = path.join(__dirname, "/public");
+
+app.use(express.static(staticPath));
 
 app.get("/", (req, res) => {
-  res.render("index", { title: "Homeeeee" });
+  res.sendFile(staticPath);
 });
 
 app.listen(8000, () => {
