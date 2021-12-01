@@ -1,3 +1,14 @@
 body {
-  background-color: blue;
+  background-color: lightcoral;
+}
+
+div {
+  margin: 0em;
+  padding: 2em;
+}
+
+#drop_zone {
+  border: 5px solid blue;
+  width: 200px;
+  height: 100px;
 }

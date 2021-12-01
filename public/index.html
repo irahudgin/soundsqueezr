@@ -8,6 +8,29 @@
   <title>Document | 543</title>
 </head>
 <body>
-  yoyoyoyoyyoyo
+  <h1>Drop stuff here</h1>
+  <!-- copied from https://github.com/mdn/dom-examples/blob/master/drag-and-drop/File-drag.html -->
+  <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    <p>Drag one or more files to this Drop Zone ...</p>
+  </div>
+  <script>
+
+    function dragOverHandler(ev) {
+
+      console.log("file is in drop zone");
+      ev.preventDefault();
+    }
+
+    function dropHandler(ev) {
+
+      console.log("file dropped");
+      ev.preventDefault();
+      if (ev.dataTransfer.items.length > 1) {
+        return alert("Must drop one file at a time");
+      }
+      console.log(ev.dataTransfer.items.length);
+      
+    }
+  </script>
 </body>
 </html>
