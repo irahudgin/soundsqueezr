@@ -6,35 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Document | 543</title>
-  <script src="node_modules/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
+  <script src="/scripts/ffmpeg/dist/ffmpeg.min.js"></script>
 </head>
 <body>
-  <h1>Drop stuff here</h1>
-  <!-- from https://github.com/mdn/dom-examples/blob/master/drag-and-drop/File-drag.html -->
-  <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-    <p>Drag one or more files to this Drop Zone ...</p>
-  </div>
+  <h1>Upload files here</h1>
+  <form action="/index.html">
+    <input type="file" id="myFile" name="filename">
+  </form>
+
   <script>
+    // https://jeromewu.github.io/ffmpeg-wasm-a-pure-webassembly-javascript-port-of-ffmpeg/
 
-    function dragOverHandler(ev) {
+    // instances the ffmpeg 
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    const ffmpeg = createFFmpeg({
+      corePath: "/scripts/core/dist/ffmpeg-core.js",
+      log: true,
+    });
 
-      console.log("file is in drop zone");
-      ev.preventDefault();
-    }
+    // shows ffmpeg progress in console
+    ffmpeg.setLogging(true);
+    const myFile = document.getElementById("myFile");
 
-    function dropHandler(ev) {
+    (async () => {
+      // instances ffmpeg (may take a few minutes)
+      await ffmpeg.load();
+      ffmpeg.FS('writeFile', 'rnmtest.mkv', await fetchFile(myFile.files[0]));
+      await ffmpeg.run('-i', 'rnmtest.mkv', 'test.mp4');
+      // need to write file 
+      const outputFile = ffmpeg.FS('readFile', 'test.mp4');
+      process.exit(0);
+    })();
 
-      console.log("file dropped");
-      ev.preventDefault();
-      if (ev.dataTransfer.items.length > 1) {
-        return alert("Must drop one file at a time");
-      }
-      
-      var mvfile = ev.dataTransfer.files[0];
-
-      var reader = new FileReader();
-      
-    }
+    
   </script>
 </body>
 </html>
