@@ -26,17 +26,31 @@
 
     // shows ffmpeg progress in console
     ffmpeg.setLogging(true);
-    const myFile = document.getElementById("myFile");
 
-    (async () => {
+    // gets file and converts it into an arrayBuffer, then a Uint8Array
+    const myFile = document.getElementById("myFile");
+    myFile.onchange = async () => {
+      var ubuffer = [];
+      const fileData = myFile.files[0];
+      await fileData.arrayBuffer().then(buffer => {
+        ubuffer = new Uint8Array(buffer, 0 ,buffer.byteLength);
+      });
+
+      console.log(ubuffer);
+      (async () => {
       // instances ffmpeg (may take a few minutes)
       await ffmpeg.load();
-      ffmpeg.FS('writeFile', 'rnmtest.mkv', await fetchFile(myFile.files[0]));
+      await ffmpeg.FS('writeFile', `${fileData.name}`, ubuffer);
       await ffmpeg.run('-i', 'rnmtest.mkv', 'test.mp4');
       // need to write file 
-      const outputFile = ffmpeg.FS('readFile', 'test.mp4');
+      // console.log(ffmpeg.FS('readFile', 'test.mp4'));
       process.exit(0);
-    })();
+      })();
+    }
+    
+    
+    
+   
 
     
   </script>
