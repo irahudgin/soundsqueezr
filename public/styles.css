@@ -12,3 +12,7 @@ div {
   width: 200px;
   height: 100px;
 }
+form * {
+  display: block;
+  margin: 10px;
+}
