@@ -13,57 +13,6 @@
   <form action="/index.html">
     <input type="file" id="myFile" name="filename">
   </form>
-
-  <script>
-    // https://jeromewu.github.io/ffmpeg-wasm-a-pure-webassembly-javascript-port-of-ffmpeg/
-
-    // instances the ffmpeg 
-    const { createFFmpeg, fetchFile } = FFmpeg;
-    const ffmpeg = createFFmpeg({
-      corePath: "/scripts/core/dist/ffmpeg-core.js",
-      log: true,
-    });
-
-    // shows ffmpeg progress in console
-    ffmpeg.setLogging(true);
-
-    // gets file and converts it into an arrayBuffer, then a Uint8Array
-    const myFile = document.getElementById("myFile");
-    myFile.onchange = async () => {
-      var ubuffer = [];
-      const fileData = myFile.files[0];
-      await fileData.arrayBuffer().then(buffer => {
-        ubuffer = new Uint8Array(buffer, 0 ,buffer.byteLength);
-      });
-
-      (async () => {
-      // instances ffmpeg (may take a few minutes)
-      await ffmpeg.load();
-      await ffmpeg.FS('writeFile', `${fileData.name}`, ubuffer);
-      await ffmpeg.run('-i', `${fileData.name}`, '-vcodec', 'copy', '-af', 'compand=0|0:1|1:-90/-900|-70/-70|-30/-9|0/-3:6:0:0:0', `out${fileData.name}`);
-      const output = await ffmpeg.FS('readFile', `out${fileData.name}`);
-      const outputBlob = new Blob([output]);
-      
-      // download section
-      const objUrl = await URL.createObjectURL(outputBlob);
-      var a = window.document.createElement('a');
-      a.href = objUrl;
-      a.download = `out${fileData.name}`;
-
-      // Append anchor to body.
-      document.body.appendChild(a);
-      a.click();
-
-      // Remove anchor from body
-      document.body.removeChild(a);
-      })();
-    }
-    
-    
-    
-   
-
-    
-  </script>
+  <script src="/javas/dyRange.js"></script>
 </body>
 </html>
