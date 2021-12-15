@@ -15,7 +15,10 @@ const myFile = document.getElementById("myFile");
 myFile.onchange = async () => {
   var ubuffer = [];
   const fileData = myFile.files[0];
+  // file error if statesments here
   // converts fileData to arrayBuffer, then uses an asynchronous function to turn it into a Uint8Array ubuffer
+
+  // try catch this whole block?
   await fileData.arrayBuffer().then((buffer) => {
     ubuffer = new Uint8Array(buffer, 0, buffer.byteLength);
   });
