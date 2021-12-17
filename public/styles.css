@@ -1,18 +1,23 @@
 body {
-  background-color: lightcoral;
+  background-image: url("background.jpeg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 1200px;
 }
 
-div {
-  margin: 0em;
-  padding: 2em;
+.formDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30%;
 }
 
-#drop_zone {
-  border: 5px solid blue;
-  width: 200px;
-  height: 100px;
-}
 form * {
-  display: block;
-  margin: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+h1 {
+  color: blue;
 }
