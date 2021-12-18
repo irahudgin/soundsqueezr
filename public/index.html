@@ -7,14 +7,23 @@
   <link rel="stylesheet" href="styles.css">
   <title>SoundSqueezr</title>
   <script src="/scripts/ffmpeg/dist/ffmpeg.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <h1>Upload files here</h1>
+  <nav class='navBar'>
+    <a class ='home' href='index.html'>Sound Squeezr</a>  
+    <a href='#' class="fa fa-twitter"></a>
+
+  </nav>
+
+  <img src='speakers.png' class='mainImg'>
   <div class="formDiv">
-    <form action="/index.html">
-        <input type="file" id="myFile" name="filename">
-    </form>
+    <label for="myFile" class="custom-file-upload">
+      Upload Movie File Here
+    </label>
+    <input type="file" id="myFile" name="filename">
   </div>
+
   <script src="/javas/dyRange.js"></script>
 </body>
 </html>
