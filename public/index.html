@@ -21,13 +21,19 @@
     </nav>
 
     <img src="speakers.png" class="mainImg" />
-    <div class="formDiv">
-      <label for="myFile" class="custom-file-upload">
-        Upload Movie File Here
-      </label>
-      <input type="file" id="myFile" name="filename" />
-      <div class="spin"></div>
+    <div class="loadingWrapper">
+      <div class="formDiv">
+        <label for="myFile" class="custom-file-upload">
+          Upload Movie File Here
+        </label>
+        <input type="file" id="myFile" name="filename" />
+        <div class="loading" id="loading"></div>
+      </div>
     </div>
+    <p class="loadingText" id="loadingText">
+      ...Modifying audio, check back in a few minutes...
+    </p>
+    <div class="spacing"></div>
     <div class="accordionWrapper">
       <div>
         <button class="accordion">About / READme</button>
@@ -41,20 +47,22 @@
             inputted file are done client-side, rather than passing large media
             files through to a server, resulting in reduced server load and
             faster retrieval time for the outputted file. The client-side aspect
-            also ensures the safety and integrity of your file as all
-            modifications to the file are done right in the browser. The end
-            result is the original file, and a duplicate media file with "out_"
-            prepended to indicate the modified file.
+            also ensures the security and integrity of your file as all
+            modifications to the file are done right in the browser, and no
+            information is transmitted across the internet. The end result is
+            the original file, and a duplicate media file with "out_" prepended
+            to indicate the modified file.
           </p>
           <p>
-            Currently, the audio quality is impacted and there is a
+            Currently, the audio quality is impacted, it takes a few minutes,
+            and there is a
             <b>cap for file size at 2gb</b>. Future tweaks will be added to
             include more features and improve functionality.
           </p>
         </div>
       </div>
       <div>
-        <button class="accordion">Contact + feedback</button>
+        <button class="accordion">Contact + Feedback</button>
         <div class="panel">
           <p>Did this app work for you?</p>
           <p>

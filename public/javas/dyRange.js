@@ -1,5 +1,8 @@
 // credit to:https://jeromewu.github.io/ffmpeg-wasm-a-pure-webassembly-javascript-port-of-ffmpeg/ for FFmpeg wasm
 
+var wheel = document.getElementById("loading");
+var text = document.getElementById("loadingText");
+
 // instances the ffmpeg
 const { createFFmpeg, fetchFile } = FFmpeg;
 const ffmpeg = createFFmpeg({
@@ -10,13 +13,16 @@ const ffmpeg = createFFmpeg({
 // shows ffmpeg progress in console
 ffmpeg.setLogging(true);
 
-// gets file from user and initiates ubuffer array
+// gets file from user and initiates ubuffer array + loading wheel variable
 const myFile = document.getElementById("myFile");
+
 myFile.onchange = async () => {
+  wheel.style.display = "block";
+  text.style.display = "flex";
+
   var ubuffer = [];
   const fileData = myFile.files[0];
-  // file error if statesments here?
-
+  // loading wheel appearance
   // converts fileData to arrayBuffer, then uses an asynchronous function to turn it into a Uint8Array ubuffer
   await fileData.arrayBuffer().then((buffer) => {
     ubuffer = new Uint8Array(buffer, 0, buffer.byteLength);
@@ -25,6 +31,7 @@ myFile.onchange = async () => {
   (async () => {
     try {
       await ffmpeg.load();
+
       // writes inputted movie file to memory in a Uint8Array
       await ffmpeg.FS("writeFile", `${fileData.name}`, ubuffer);
       await ffmpeg.run(
@@ -50,6 +57,9 @@ myFile.onchange = async () => {
 
       // Create object URL to get movie blob from memory, and make available for download
       const objUrl = await URL.createObjectURL(outputBlob);
+      wheel.style.display = "none";
+      text.style.display = "none";
+
       var a = window.document.createElement("a");
       a.href = objUrl;
       a.download = `out_${fileData.name}`;
