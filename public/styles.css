@@ -3,7 +3,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  min-height: 1200px;
+  min-height: 1000px;
   overscroll-behavior: none;
   margin: 0px;
 }
@@ -20,6 +20,7 @@ input[type="file"] {
   cursor: pointer;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 150px;
 }
 .mainImg {
   display: block;
@@ -50,39 +51,101 @@ form * {
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
 }
 
-.navBar a {
+.navBar .home {
   float: left;
   color: #f2f2f2;
+  background-color: black;
   text-align: center;
   padding-left: 14px;
   padding-right: 14px;
   text-decoration: none;
   font-size: 17px;
   font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
 }
 
-.navBar a:hover {
-  background-color: black;
+.navBar .home:hover {
+  background-color: grey;
   border-radius: 5px;
 }
 
 .navBar .fa {
-  padding: 20px;
-  font-size: 30px;
+  padding-top: 10px;
+  font-size: 20px;
   width: 40px;
+  height: 30px;
   text-align: center;
   text-decoration: none;
+  float: right;
 }
 
-/* Add a hover effect if you want */
-.navbar.fa:hover {
+.navBar .fa:hover {
   opacity: 0.7;
 }
 
-/* Set a specific color for each brand */
-
-/* Twitter */
 .fa-twitter {
-  background: #55acee;
+  background: #003c69;
   color: white;
+}
+
+.fa-reddit {
+  background: #003c69;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #003c69;
+  color: white;
+}
+
+.accordionWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.accordion {
+  background-color: #333333;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 400px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  text-align: center;
+  position: relative;
+  border: 1px solid black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.active,
+.accordion:hover {
+  background-color: black;
+}
+
+.accordion:after {
+  content: "\002B";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  position: absolute;
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  width: 400px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-right: 10px;
 }
