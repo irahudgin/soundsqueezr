@@ -107,8 +107,9 @@ form * {
   background-color: #333333;
   color: white;
   cursor: pointer;
-  padding: 18px;
-  width: 400px;
+  /* padding: 18px; */
+  width: 55vh;
+  height: 8vh;
   border: none;
   outline: none;
   font-size: 15px;
@@ -142,7 +143,7 @@ form * {
   padding: 0 18px;
   background-color: white;
   max-height: 0;
-  width: 400px;
+  width: 55vh;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   box-sizing: border-box;
