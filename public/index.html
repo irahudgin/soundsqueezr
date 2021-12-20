@@ -14,7 +14,7 @@
   </head>
   <body>
     <nav class="navBar">
-      <a class="home" href="index.html">Sound <b>Squeezr</b></a>
+      <a class="home" href="/">Sound <b>Squeezr</b></a>
       <a href="#" class="fa fa-twitter"></a>
       <a href="#" class="fa fa-reddit"></a>
       <a href="#" class="fa fa-linkedin"></a>
@@ -26,28 +26,46 @@
         Upload Movie File Here
       </label>
       <input type="file" id="myFile" name="filename" />
+      <div class="spin"></div>
     </div>
     <div class="accordionWrapper">
       <div>
-        <button class="accordion">READme</button>
+        <button class="accordion">About / READme</button>
         <div class="panel">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Sound Squeezr uses the FFMPEG WASM port, adapted by Jerome Wu
+            (https://github.com/ffmpegwasm/ffmpeg.wasm) to take an inputted
+            media file and compress the dynamic range of the audio for better
+            listening on lower quality speakers or for specific listening
+            environments. Thanks to the ffmpeg wasm, all adjustments to the
+            inputted file are done client-side, rather than passing large media
+            files through to a server, resulting in reduced server load and
+            faster retrieval time for the outputted file. The client-side aspect
+            also ensures the safety and integrity of your file as all
+            modifications to the file are done right in the browser. The end
+            result is the original file, and a duplicate media file with "out_"
+            prepended to indicate the modified file.
+          </p>
+          <p>
+            Currently, the audio quality is impacted and there is a
+            <b>cap for file size at 2gb</b>. Future tweaks will be added to
+            include more features and improve functionality.
           </p>
         </div>
       </div>
       <div>
-        <button class="accordion">Contact</button>
+        <button class="accordion">Contact + feedback</button>
         <div class="panel">
+          <p>Did this app work for you?</p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Please let me know if you liked it, or what went wrong for you below
           </p>
+          <p>
+            If you really liked it, or if it saved your heart from extremely
+            loud horror movie jump scares share it! (top right buttons)
+          </p>
+          <p>soundsqueezr@gmail.com</p>
+          <p>https://github.com/irahudgin\</p>
         </div>
       </div>
     </div>

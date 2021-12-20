@@ -3,7 +3,7 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  min-height: 1000px;
+  min-height: 1100px;
   overscroll-behavior: none;
   margin: 0px;
 }
@@ -22,6 +22,11 @@ input[type="file"] {
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 150px;
 }
+
+.custom-file-upload:hover {
+  opacity: 0.7;
+}
+
 .mainImg {
   display: block;
   margin-left: auto;
@@ -84,17 +89,17 @@ form * {
 }
 
 .fa-twitter {
-  background: #003c69;
+  background: #8a0083;
   color: white;
 }
 
 .fa-reddit {
-  background: #003c69;
+  background: #8a0083;
   color: white;
 }
 
 .fa-linkedin {
-  background: #003c69;
+  background: #8a0083;
   color: white;
 }
 
@@ -119,6 +124,7 @@ form * {
   border: 1px solid black;
   margin-left: 10px;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .active,
