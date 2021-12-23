@@ -3,3 +3,4 @@ package-lock.json
 .vscode
 rnmtest.mkv
 nodemon.json
+.DS_Store
