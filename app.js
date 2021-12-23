@@ -18,6 +18,4 @@ app.get("/", (req, res) => {
   res.sendFile(staticPath);
 });
 
-app.listen(process.env.PORT || 8000, () => {
-  console.log("server running");
-});
+app.listen(process.env.PORT);
