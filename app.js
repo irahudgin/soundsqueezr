@@ -14,8 +14,10 @@ app.use((req, res, next) => {
 app.use(express.static(staticPath));
 app.use("/scripts", express.static(__dirname + "/node_modules/@ffmpeg/"));
 
+console.log(`${staticPath}`);
+
 app.get("/", (req, res) => {
-  res.sendFile(staticPath);
+  res.sendFile(`${staticPath}/index.html`);
 });
 
 app.listen(process.env.PORT);
