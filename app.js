@@ -15,7 +15,7 @@ app.use(express.static(staticPath));
 app.use("/scripts", express.static(__dirname + "/node_modules/@ffmpeg/"));
 
 app.get('*', (req, res) => {
-  console.log(req.headers['protocol']);
+  console.log(req.headers);
 
   // if (req.headers['protocol'] != 'https') {
   //   res.redirect('https://www.soundsqueezr.com/' + req.url);
