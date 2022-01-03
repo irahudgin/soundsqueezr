@@ -9,17 +9,19 @@ var staticPath = path.join(__dirname, "/public");
 app.use((req, res, next) => {
   res.set("Cross-Origin-Embedder-Policy", "require-corp");
   res.set("Cross-Origin-Opener-Policy", "same-origin");
+  res.header("Cross-Origin-Resource-Policy", "same-site");
+
   next();
 });
 app.use(express.static(staticPath));
 app.use("/scripts", express.static(__dirname + "/node_modules/@ffmpeg/"));
 
 app.get('*', (req, res) => {
-  console.log(req.headers);
+  let protocol = req.protocol;
 
-  // if (req.headers['protocol'] != 'https') {
-  //   res.redirect('https://www.soundsqueezr.com/' + req.url);
-  // }
+  if (protocol != 'https') {
+    res.redirect('https://www.soundsqueezr.com/');
+  }
 });
 
 app.get("/", (req, res) => {
