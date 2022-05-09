@@ -1,8 +1,6 @@
 body {
-  background-image: url("background.jpeg");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-image: url("tactile_noise.png");
+  background-repeat: repeat;
   min-height: 150vh;
   overscroll-behavior: none;
   margin: 0px;
@@ -109,18 +107,20 @@ form * {
 }
 
 .fa-twitter {
-  background: #8a0083;
+  background: black;
   color: white;
 }
 
 .fa-reddit {
-  background: #8a0083;
+  background: black;
   color: white;
 }
 
 .fa-linkedin {
-  background: #8a0083;
+  background: black;
   color: white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .accordionWrapper {

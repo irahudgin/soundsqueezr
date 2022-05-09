@@ -16,25 +16,22 @@ app.use((req, res, next) => {
 app.use(express.static(staticPath));
 app.use("/scripts", express.static(__dirname + "/node_modules/@ffmpeg/"));
 
-app.get('*', (req, res) => {
-  if(req.headers["x-forwarded-proto"] === "https") {
-    // OK, continue
-    return next();
-  };  
-  res.redirect('https://www.soundsqueezr.com/');
-  
-  
-  
-  // let protocol = req.protocol;
+// app.get('*', (req, res) => {
+//   if(req.headers["x-forwarded-proto"] === "https") {
+//     // OK, continue
+//     return next();
+//   };
+//   res.redirect('https://www.soundsqueezr.com/');
 
-  // if (protocol != 'https') {
-  //   res.redirect('https://www.soundsqueezr.com/');
-  // }
-});
+//   // let protocol = req.protocol;
+
+//   // if (protocol != 'https') {
+//   //   res.redirect('https://www.soundsqueezr.com/');
+//   // }
+// });
 
 app.get("/", (req, res) => {
   res.sendFile(staticPath);
 });
-
 
 app.listen(process.env.PORT || 8000);
