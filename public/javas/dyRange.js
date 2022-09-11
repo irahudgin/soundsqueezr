@@ -67,10 +67,12 @@ myFile.onchange = async () => {
       // Append anchor to body.
       document.body.appendChild(a);
       a.click();
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
 
       // Remove anchor from body
       document.body.removeChild(a);
-      location.reload();
     } catch (err) {
       alert(
         "Problem with outputting file. Make sure file is a movie file! Page will reload upon closing this box"
